@@ -26,12 +26,20 @@ function Todo() {
     { key: getKey(), text: '明日の準備をする', done: false },
     /* テストコード 終了 */
   ]);
+  
+  const onHandleKeyDown = (e) => {
+    if(e.key === 'Enter') {
+      const item={key: getKey(), text:e.target.value, done:false};
+      putItems(items => [...items,item]);
+    }
+  }
 
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
+      <input className="input" type="text" onKeyDown={onHandleKeyDown}/>
       {items.map(item => (
         <TodoItem 
           key={item.key}
