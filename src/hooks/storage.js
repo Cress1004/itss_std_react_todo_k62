@@ -28,5 +28,3 @@ export default function useStorage() {
 
   return [items, putItems, clearItems];
 }
-
-export default useStorage;
