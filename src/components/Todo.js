@@ -19,6 +19,7 @@ import useStorage from '../hooks/storage';
 import {getKey} from "../lib/util";
 
 function Todo() {
+  const [items, putItems, editItems, clearItems] = useStorage();
   const handleCheck = checked => {
     const newItems = items.map(item => {
       if (item.key === checked.key) {
