@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 /* 
   【Todoのデータ構成】
@@ -19,7 +19,7 @@ import useStorage from '../hooks/storage';
 import {getKey} from "../lib/util";
 
 function Todo() {
-  const [items, putItems, editItems, clearItems] = useStorage();
+  const [items, putItems, clearItems] = useStorage();
   const handleCheck = checked => {
     const newItems = items.map(item => {
       if (item.key === checked.key) {
@@ -54,7 +54,7 @@ function Todo() {
         onChange={handleFilterChange}
         value={filter}
       />
-      {items.map(item => (
+      {displayItems.map(item => (
         <TodoItem 
           key={item.key}
           item={item}
@@ -62,7 +62,7 @@ function Todo() {
         />
       ))}
       <div className="panel-block">
-        {items.length} items
+        {displayItems.length} items
       </div>
       <div className="panel-block">
         <button className="button is-light is-fullwidth" onClick={clearItems}>
